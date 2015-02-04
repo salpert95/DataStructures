@@ -1,3 +1,6 @@
+//Program by Steven Alpert
+//Assignment 1 - File to string
+//For CIS 269 at Joliet Junior College
 public abstract class Account {
 	public Account(){
 		balance = 0;
