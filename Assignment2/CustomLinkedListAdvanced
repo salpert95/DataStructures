@@ -1,0 +1,97 @@
+//Program by Steven Alpert
+//Assignment 2 - File to Linked Lists
+//For CIS 269 at Joliet Junior College
+package com.school.Bank2;
+
+public class CustomLinkedListAdvanced{
+	Node head;
+	int listCount;
+	public CustomLinkedListAdvanced(){
+		head = new Node(null);
+		listCount = 0;
+	}
+	public void add(Object data){ 		
+		Node temp = new Node(data); 		
+		Node current = head; 		
+		while (current.getNext() != null){ 			
+			current = current.getNext(); 		
+		} 		
+		current.setNext(temp); 		
+		listCount++;
+	}
+	public void add(Object data, int index){ 		
+		Node temp = new Node(data); 		
+		Node current = head; 		
+		for(int i = 1; i < index && current.getNext() != null; i++){ 			
+			current = current.getNext(); 		
+		} 		
+		temp.setNext(current.getNext()); 		
+		current.setNext(temp); 		
+		listCount++;
+	}
+	public void set(Object data, int index){
+		if (index <= 0)
+			return;
+		Node current = head.getNext();
+		for (int i = 1; i < index; i++){
+			if (current.getNext() == null)
+				return;
+			current = current.getNext();
+		}
+		current.setData(data);
+	}
+	public Object get(int index){
+		if (index <= 0)
+			return null;
+		Node current = head.getNext();
+		for (int i = 1; i < index; i++){
+			if (current.getNext() == null)
+				return null;
+			current = current.getNext();
+		}
+		return current.getData();
+	}
+//counts	
+	public boolean remove(int index){
+		if (index <= 0 || index > count())
+			return false;
+		Node current = head;
+		for (int i = 1; i < index; i++){
+			if (current.getNext() == null)
+				return false;
+			current = current.getNext();
+		}
+		current.setNext(current.getNext().getNext());
+		listCount--;
+		return true;
+	}
+	public int count(){
+		return listCount;
+	}
+//getter and setter	
+	private class Node{
+		Node next;
+		Object data;
+		public Node(Object data){
+			next = null;
+			this.data = data;
+		}
+		public Node(Node next, Object data){
+			this.next = next;
+			this.data = data;
+		}
+		public Node getNext(){
+			return next;
+		}
+		public Object getData(){
+			return data;
+		}
+		public void setNext(Node next){
+			this.next = next;
+		}
+		public void setData(Object data){
+			this.data = data;
+		}
+	}
+}
+
