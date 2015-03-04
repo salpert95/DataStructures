@@ -1,0 +1,10 @@
+//Program by Steven Alpert
+//Assignment 2 - File to Linked Lists
+//For CIS 269 at Joliet Junior College
+package com.school.Bank2;
+
+public class Main {
+	public static void main(String[] args) {
+		Bank2.INSTANCE.run("G:\\College\\Spring 2015\\data structures\\bank.dat");
+	}
+}
